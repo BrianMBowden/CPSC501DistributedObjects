@@ -3,6 +3,8 @@ package sender;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -31,19 +33,25 @@ public class Server {
 		// I was here. need to get socket data
 		listen();
 		
+		
 	}
 	
 	private void listen(){
 		int currentStatus = getStatus();
-		while(!shutdown){
-			try {
-				clientSocket = serverSocket.accept();
-			} catch (IOException e) {
-				System.out.println("Could not establish connection with Client");
-				System.exit(-1);
-			}
+		try {
+			clientSocket = serverSocket.accept();
+			setIn(clientSocket.getInputStream());
+			setOut(clientSocket.getOutputStream());
+		} catch (IOException e) {
+			System.out.println("Could not establish connection with Client");
+			System.exit(-1);
 		}
-		kill();
+	
+	}
+	
+	public void talk(byte[] bArray){
+		System.out.println("Waiting for client");
+		
 	}
 	
 	private void kill(){
@@ -61,4 +69,8 @@ public class Server {
 	private ServerSocket getServerSocket(){return serverSocket;}
 	private void flipShutdown(){this.shutdown = !this.shutdown;}
 	private int getStatus(){return this.status;}
+	private void setIn(InputStream dIn){this.in = new DataInputStream(dIn);}
+	private void setOut(OutputStream dOut){this.out = new DataOutputStream(dOut);}
+	private DataInputStream getIn(){return in;}
+	private DataOutputStream getOut(){return out;}
 }
