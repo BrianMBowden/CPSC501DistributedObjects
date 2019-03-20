@@ -1,5 +1,7 @@
 package sender;
 
+import java.util.Vector;
+
 import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -11,27 +13,57 @@ import arbitraryClasses.*;
 public class Sender {
 
 	public static Server server;
+	private static int status;
 	
 	public static void main(String[] args){
 		
 		server = new Server();
+		objectCreator objC = new objectCreator();
 		server.startConnection();
-		Phone phone = new Phone();
-		phone.setName("Brian");
-		Samsung samsung = new Samsung();
-		samsung.setContactList(new String[]{"Brian", "Omar"});
-		samsung.setSerial(123456);
-		samsung.setVersion(8888888888888L);
-		Apple apple = new Apple();
-		apple.setSerial(123456);
-		apple.setActive(false);
-		apple.setGSM((short)32);
-		ContactList cList = new ContactList();
-		cList.setContacts(new String[]{"Brian","Omar"});
-		cList.setNumbers(new long[]{1234L, 2345L});
 		System.out.println("serialization");
+		while(true){
+			objC.menuPrompt();
+			status = objC.userChoice();
+			objC.flush();
+			if (status == 5){
+				server.talk("quit".getBytes());
+				break;
+			}
+			else if (status == 4){ // Contact list
+				ContactList cList = new ContactList();
+				cList.setContacts(objC.userStringArr());
+				cList.setNumbers(objC.intArray());
+				sendXML(cList);
+			}
+			else if (status == 3){ // Apple
+				Apple apple = new Apple();
+				apple.setSerial((int)objC.userInt());
+				apple.setActive(objC.userBool());
+				apple.setGSM((short)objC.userInt());
+				sendXML(apple);
+			}
+			else if (status == 2){ // Samsung
+				Samsung samsung = new Samsung();
+				samsung.setSerial((int)objC.userInt());
+				samsung.setVersion(objC.userInt());
+				sendXML(samsung);
+			}
+			else if (status == 1){ // Phone 
+				Phone phone = new Phone();
+				phone.setName(objC.userString());
+				sendXML(phone);
+			}
+			else {
+				System.out.println("Bad input somewhere, exiting");
+				System.exit(-1);
+			}
+		}
+		objC.exitPrompt();
+	}
+	
+	private static void sendXML(Object obj){
 		try {
-			Document d = Serializer.serialize(cList);
+			Document d = Serializer.serialize(obj);
 			XMLOutputter out = new XMLOutputter();
 			String send = out.outputString(d);
 			byte[] bArray = send.getBytes();
@@ -41,8 +73,5 @@ public class Sender {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		
-		
 	}
 }

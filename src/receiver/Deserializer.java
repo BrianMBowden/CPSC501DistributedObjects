@@ -31,8 +31,6 @@ public class Deserializer {
 				if (!Modifier.isPublic(c.getModifiers())){
 					c.setAccessible(true);
 				}
-				System.out.println(c.getName());
-				System.out.println(c.getParameterCount());
 				instance = c.newInstance();
 			}
 			else {
@@ -73,7 +71,8 @@ public class Deserializer {
 	
 	private static Object deserializeValue(Element vElement, Class fieldType, Map table) throws ClassNotFoundException {
 		String valtype = vElement.getName();
-		if(valtype.equals(null)){
+		System.out.println(vElement.getText());
+		if(valtype.equals("null")){
 			return null;
 		}
 		else if (valtype.equals("reference")){

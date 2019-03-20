@@ -21,23 +21,21 @@ public class Receiver {
 		client = new Client();
 		client.connectToServer();
 		String fromSender = client.waitForInput();
-		if (fromSender != null){
+		while (!fromSender.equals("quit")){
 			System.out.println(fromSender);
 			SAXBuilder builder = new SAXBuilder();
+			System.out.println("Deserialization");
 			try {
 				Document d = builder.build(new StringReader(fromSender));
 				Object o = Deserializer.deserializeObject(d);
 				ObjectInspector objInspect = new ObjectInspector();
-				objInspect.inspect(o, false);
+				objInspect.inspect(o, true);
+				fromSender = client.waitForInput();
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		else {
-			System.out.println("NULL found");
-		}
-
 	}
 
 }

@@ -56,7 +56,6 @@ public class Client {
 		int size;
 		try {
 			size = getIn().readInt();
-			System.out.println(size);
 			byte[] bArray = new byte[size];
 			getIn().read(bArray, 0, size);
 			return new String(bArray);
