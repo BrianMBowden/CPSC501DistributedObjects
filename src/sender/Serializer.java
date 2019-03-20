@@ -1,12 +1,15 @@
 package sender;
 
+import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.awt.List;
+
 import java.lang.reflect.*;
 
-import org.jdom.*;
+import org.jdom2.*;
+import org.jdom2.Content;
 
 public class Serializer {
 
@@ -75,7 +78,7 @@ public class Serializer {
 	}
 	
 	private static Field[] getInstanceVariables(Class cls){
-		LinkedList accum = new LinkedList();
+		List accum = new LinkedList();
 		while (cls != null){
 			Field fields[] = cls.getDeclaredFields();
 			for (Field field : fields){

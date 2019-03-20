@@ -16,10 +16,8 @@ public class Client {
 	private DataInputStream in;
 	private Socket serverSocket;
 	private Socket clientSocket;
-	private BufferedReader standardInput;
 	
 	public Client(){
-		standardInput = new BufferedReader(new InputStreamReader(System.in));
 		
 	}
 	
@@ -37,10 +35,35 @@ public class Client {
 		try {
 			this.out = new DataOutputStream(serverSocket.getOutputStream());
 			this.in = new DataInputStream(serverSocket.getInputStream());
+
+			
 		} catch (IOException e) {
 			System.out.println("Could not get input/output streams from server");
 			System.exit(-1);
 		}
+		String fromServer;
+		try {
+			fromServer = getIn().readUTF();
+			System.out.println(fromServer);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+	
+	public String waitForInput(){
+		int size;
+		try {
+			size = getIn().readInt();
+			System.out.println(size);
+			byte[] bArray = new byte[size];
+			getIn().read(bArray, 0, size);
+			return new String(bArray);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	
@@ -52,5 +75,6 @@ public class Client {
 		}
 	}
 	
-	private DataOutputStream getOut(){return this.out;}
+	public DataOutputStream getOut(){return this.out;}
+	public DataInputStream getIn(){return this.in;}
 }

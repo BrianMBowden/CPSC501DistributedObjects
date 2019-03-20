@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Content;
+
+import arbitraryClasses.*;
 
 public class Deserializer {
 
@@ -24,11 +27,13 @@ public class Deserializer {
 			Class cls = Class.forName(objectElement.getAttributeValue("class"));
 			Object instance = null;
 			if (!cls.isArray()){
-				Constructor c = cls.getDeclaredConstructor(null);
+				Constructor c = cls.getDeclaredConstructor();
 				if (!Modifier.isPublic(c.getModifiers())){
 					c.setAccessible(true);
 				}
-				instance = c.newInstance(null);
+				System.out.println(c.getName());
+				System.out.println(c.getParameterCount());
+				instance = c.newInstance();
 			}
 			else {
 				instance = Array.newInstance(cls.getComponentType(), Integer.parseInt(objectElement.getAttributeValue("length")));

@@ -42,6 +42,7 @@ public class Server {
 			clientSocket = serverSocket.accept();
 			setIn(clientSocket.getInputStream());
 			setOut(clientSocket.getOutputStream());
+			getOut().writeUTF("Established Connection");
 		} catch (IOException e) {
 			System.out.println("Could not establish connection with Client");
 			System.exit(-1);
@@ -51,6 +52,14 @@ public class Server {
 	
 	public void talk(byte[] bArray){
 		System.out.println("Waiting for client");
+		
+		try {
+			getOut().writeInt(bArray.length);
+			getOut().write(bArray);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -71,6 +80,6 @@ public class Server {
 	private int getStatus(){return this.status;}
 	private void setIn(InputStream dIn){this.in = new DataInputStream(dIn);}
 	private void setOut(OutputStream dOut){this.out = new DataOutputStream(dOut);}
-	private DataInputStream getIn(){return in;}
-	private DataOutputStream getOut(){return out;}
+	public DataInputStream getIn(){return in;}
+	public DataOutputStream getOut(){return out;}
 }
