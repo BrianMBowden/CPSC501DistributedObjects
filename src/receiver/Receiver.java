@@ -35,21 +35,26 @@ public class Receiver {
 		client.connectToServer();
 		String fromSender = client.waitForInput();
 		while (!fromSender.equals("quit")){
-			System.out.println(fromSender);
-			SAXBuilder builder = new SAXBuilder();
-			System.out.println("Deserialization");
 			try {
-				Document d = builder.build(new StringReader(fromSender));
-				Object o = Deserializer.deserializeObject(d);
-				ObjectInspector objInspect = new ObjectInspector();
-				objInspect.inspect(o, true);
+				rebuild(fromSender);
 				fromSender = client.waitForInput();
-
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.exit(-1);
+				System.exit(-1);	
 			}
 		}
 	}
 
+	
+	public static void rebuild(String string) throws Exception{
+		SAXBuilder builder = new SAXBuilder();
+		try {
+			Document d = builder.build(new StringReader(string));
+			Object o = Deserializer.deserializeObject(d);
+			ObjectInspector objInspect = new ObjectInspector();
+			objInspect.inspect(o, true);
+		} catch (Exception e) {
+			throw new Exception();
+		}
+	}
 }

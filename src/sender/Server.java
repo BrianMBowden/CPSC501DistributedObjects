@@ -71,7 +71,6 @@ public class Server {
 			getOut().writeInt(bArray.length);
 			getOut().write(bArray);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -82,7 +81,6 @@ public class Server {
 			getClientSocket().close();
 			getServerSocket().close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Could not shutdown socket");
 		}
 		
