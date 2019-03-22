@@ -1,3 +1,15 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * receiver.ObjectInspector.java
+ * 
+ * Reflective object inspector.
+ * 
+ * ========================================================================================
+ */
 package receiver;
 
 import java.util.*;
@@ -10,7 +22,6 @@ public class ObjectInspector {
 	
 	public void inspect (Object object, boolean recursive){
 		
-		//HashMap objectsToInspect = new HashMap();
 		Class classObject = object.getClass();
 		
 		String fullName = "";

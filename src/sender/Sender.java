@@ -1,3 +1,16 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * sender.Sender.java
+ * 
+ * Program runner for Sending side of Distributed Object Creator
+ * Handles all front-end interaction and XML integration
+ * 
+ * ========================================================================================
+ */
 package sender;
 
 import java.util.Arrays;
@@ -63,6 +76,7 @@ public class Sender {
 			}
 		}
 		objC.exitPrompt();
+		server.kill();
 	}
 	
 	private static void sendXML(Object obj){

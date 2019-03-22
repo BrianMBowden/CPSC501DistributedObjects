@@ -1,3 +1,16 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * receiver.Receiver.java
+ * 
+ * Program runner for Receiving side of Distributed Object Creator
+ * Handles all front-end interaction and XML integration
+ * 
+ * ========================================================================================
+ */
 package receiver;
 
 import java.io.IOException;

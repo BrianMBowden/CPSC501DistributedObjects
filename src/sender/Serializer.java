@@ -1,3 +1,19 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * sender.Serializer.java
+ * 
+ * Handles serialization of an object in preparation for an XML Document
+ * 
+ * Serialization method credit:
+ * Chapter 2
+ * Forman, Ira R., and Nate Forman. Java Reflection in Action. Manning, 2005.
+ *
+ * ========================================================================================
+ */
 package sender;
 
 import java.util.Collections;

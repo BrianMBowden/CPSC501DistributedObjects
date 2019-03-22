@@ -1,3 +1,17 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * receiver.Client.java
+ * 
+ * Tries to establish socket over TCP socket. Upon successful connection, waits for UTF
+ * message from socket.
+ * All following data is accepted as a byte array
+ * 
+ * ========================================================================================
+ */
 package receiver;
 
 import java.io.BufferedReader;

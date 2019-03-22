@@ -1,3 +1,20 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * receiver.Deserializer.java
+ * 
+ * Handles deserialization of an XML Document and returns it as an object in its original 
+ * state
+ * 
+ * Serialization method credit:
+ * Chapter 3
+ * Forman, Ira R., and Nate Forman. Java Reflection in Action. Manning, 2005.
+ * 
+ * ========================================================================================
+ */
 package receiver;
 
 import java.lang.reflect.*;
@@ -72,6 +89,7 @@ public class Deserializer {
 	private static Object deserializeValue(Element vElement, Class fieldType, Map table) throws ClassNotFoundException {
 		String valtype = vElement.getName();
 		if(valtype.equals("null")){
+			// return null was giving me issues, changed this to get past an error
 			return Integer.valueOf(0);
 		}
 		else if (valtype.equals("reference")){

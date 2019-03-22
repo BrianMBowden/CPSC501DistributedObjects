@@ -1,3 +1,17 @@
+/* ========================================================================================
+ * Author: Brian Bowden
+ * ID: 10060818
+ * Due Date: March 22, 2019
+ * Class: CPSC501 T03
+ * ========================================================================================
+ * sender.Server.java
+ * 
+ * Socket opener and closer. Maintains connection over TCP socket. 
+ * 		Says hello to client upon successful connection and sends all output via byte array
+ * 		through a DataOutputStream
+ * 
+ * ========================================================================================
+ */
 package sender;
 
 import java.io.DataInputStream;
@@ -63,7 +77,7 @@ public class Server {
 		
 	}
 	
-	private void kill(){
+	public void kill(){
 		try {
 			getClientSocket().close();
 			getServerSocket().close();
