@@ -1,0 +1,53 @@
+commit 4618e686145347a39b983fbe1306bea3498511b7
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Fri Mar 22 14:01:54 2019 -0600
+
+    changed some formatting in refactoring file
+
+commit 1368370ed4ce56558ff1c5e2e7571d80a47ca576
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Fri Mar 22 13:49:20 2019 -0600
+
+    Created refactoring file. Added first refactor
+
+commit 39721d0e9f3569c517b49af89f4c5a62b7a79a26
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Thu Mar 21 20:51:59 2019 -0600
+
+    Made object creator more dynamic in how it asks user for input
+
+commit 0fbdf8b9f00d788421ef3572ac59c948430899d7
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Thu Mar 21 20:26:54 2019 -0600
+
+    Added comment blocks
+
+commit 25e856fc4984628ed88a7f02082686ee0badd6ac
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Thu Mar 21 18:25:02 2019 -0600
+
+    Everything seems to work now. Made ObjectInspector simpler. Collection classes now work
+
+commit 0f2f43686db91ed7cb4279563b2acb69eee414bd
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Tue Mar 19 22:24:13 2019 -0600
+
+    modified Sender and Receiver to stay alive until told to die. Finished objectCreator
+
+commit 7667c97e65909f5b65c588ea3a131dfd504186ff
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Tue Mar 19 18:09:49 2019 -0600
+
+    Forgot to commit as I went along. Added arbitrary classes for testing. Added objectInspector and objectCreator. Modified Sender, Receiver, Client and Server
+
+commit c463d9cede4d9562548964f105f889218fd11c65
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Sun Mar 17 19:08:29 2019 -0600
+
+    Added serializer and deserializer
+
+commit a11be5b6c1d0814a1878dde9c3b6272f74756247
+Author: BrianMBowden <brianmbowden@live.ca>
+Date:   Sun Mar 17 17:21:59 2019 -0600
+
+    initital commit, receiver and sender packages created
