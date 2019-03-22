@@ -71,9 +71,8 @@ public class Deserializer {
 	
 	private static Object deserializeValue(Element vElement, Class fieldType, Map table) throws ClassNotFoundException {
 		String valtype = vElement.getName();
-		System.out.println(vElement.getText());
 		if(valtype.equals("null")){
-			return null;
+			return Integer.valueOf(0);
 		}
 		else if (valtype.equals("reference")){
 			return table.get(vElement.getText());

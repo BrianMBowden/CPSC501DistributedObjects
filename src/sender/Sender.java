@@ -1,10 +1,12 @@
 package sender;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import arbitraryClasses.*;
@@ -43,7 +45,9 @@ public class Sender {
 				sendXML(apple);
 			}
 			else if (status == 2){ // Samsung
-				Samsung samsung = new Samsung();
+				String[] cs = objC.userStringArr();
+				Vector<String> v = new Vector<String>(Arrays.asList(cs));
+				Samsung samsung = new Samsung(v);
 				samsung.setSerial((int)objC.userInt());
 				samsung.setVersion(objC.userInt());
 				sendXML(samsung);
@@ -65,10 +69,12 @@ public class Sender {
 		try {
 			Document d = Serializer.serialize(obj);
 			XMLOutputter out = new XMLOutputter();
+			out.setFormat(Format.getPrettyFormat());
+			out.output(d, System.out);
 			String send = out.outputString(d);
 			byte[] bArray = send.getBytes();
-			System.out.println(send);
-			System.out.println(send.getBytes().length);
+			//System.out.println(send);
+			//System.out.println(send.getBytes().length);
 			server.talk(bArray);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -17,12 +17,10 @@ public class Samsung implements Serializable{
 		contactList = null;
 	}
 	
+	public Samsung(Vector<String> strings){
+		this.contactList = strings;
+	}
+	
 	public void setSerial(int s){this.serialNumber = s;}
 	public void setVersion(long v){this.version = v;}
-	public void setContactList(String[] c){
-		contactList = new Vector<String>();
-		for (int i = 0; i < c.length; i++){
-			this.contactList.addElement(c[i]);
-		}
-	}
 }

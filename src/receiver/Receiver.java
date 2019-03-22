@@ -34,6 +34,7 @@ public class Receiver {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.exit(-1);
 			}
 		}
 	}
