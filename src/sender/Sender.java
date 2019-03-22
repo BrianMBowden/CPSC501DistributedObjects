@@ -46,28 +46,28 @@ public class Sender {
 			}
 			else if (status == 4){ // Contact list
 				ContactList cList = new ContactList();
-				cList.setContacts(objC.userStringArr());
-				cList.setNumbers(objC.intArray());
+				cList.setContacts(objC.userStringArr("Contact List", "contact name"));
+				cList.setNumbers(objC.intArray("Contact List", "contact number"));
 				sendXML(cList);
 			}
 			else if (status == 3){ // Apple
 				Apple apple = new Apple();
-				apple.setSerial((int)objC.userInt());
-				apple.setActive(objC.userBool());
-				apple.setGSM((short)objC.userInt());
+				apple.setSerial((int)objC.userInt("serial number"));
+				apple.setActive(objC.userBool("active status"));
+				apple.setGSM((short)objC.userInt("gsm number"));
 				sendXML(apple);
 			}
 			else if (status == 2){ // Samsung
-				String[] cs = objC.userStringArr();
+				String[] cs = objC.userStringArr("Samsung Contact List","contact name");
 				Vector<String> v = new Vector<String>(Arrays.asList(cs));
 				Samsung samsung = new Samsung(v);
-				samsung.setSerial((int)objC.userInt());
-				samsung.setVersion(objC.userInt());
+				samsung.setSerial((int)objC.userInt("serial number"));
+				samsung.setVersion(objC.userInt("version number"));
 				sendXML(samsung);
 			}
 			else if (status == 1){ // Phone 
 				Phone phone = new Phone();
-				phone.setName(objC.userString());
+				phone.setName(objC.userString("Name"));
 				sendXML(phone);
 			}
 			else {

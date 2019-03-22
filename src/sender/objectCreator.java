@@ -68,9 +68,9 @@ public class objectCreator {
 		return choice;
 	}
 	
-	public long userInt(){
+	public long userInt(String instruction){
 		long number;
-		System.out.println("Please enter a valid integer:");
+		System.out.println("Please enter a " + instruction + ":");
 		while (true){
 			if(in.hasNextLong()){
 				number = in.nextLong();
@@ -86,26 +86,26 @@ public class objectCreator {
 		return number;
 	}
 	
-	public long[] intArray(){
-		System.out.println("Please enter number of entries:");
-		int length = (int)userInt();
+	public long[] intArray(String target, String instruction){
+		System.out.println("Please enter number of entries in " + target + ":");
+		int length = (int)userInt("number");
 		long[] arr = new long[length];
 		for (int i = 0; i < length; i++){
-			arr[i] = userInt();
+			arr[i] = userInt(instruction);
 			flush();
 		}
 		return arr;
 	}
 	
-	public String userString(){
-		System.out.println("Please enter a valid String:");
+	public String userString(String instruction){
+		System.out.println("Please enter a " + instruction + ":");
 		String string = in.nextLine();
 		System.out.println(string);
 		return string;
 	}
 	
-	public boolean userBool(){
-		System.out.println("Please enter a valid boolean:");
+	public boolean userBool(String instruction){
+		System.out.println("Please " + instruction + " t/f (true/false)");
 		boolean ret;
 		flush();
 		String str = in.nextLine();
@@ -114,14 +114,14 @@ public class objectCreator {
 				|| str.compareTo("True") == 0);
 	}
 	
-	public String[] userStringArr(){
+	public String[] userStringArr(String target, String instruction){
 		String[] strings;
-		System.out.println("Please enter number of entries:");
-		int size = (int)userInt();
+		System.out.println("Please enter number of entries in " + target + ":");
+		int size = (int)userInt("number");
 		flush();
 		strings = new String[size];
 		for(int i = 0; i < size; i++){
-			strings[i] = userString();	
+			strings[i] = userString(instruction);	
 		}
 		return strings;
 	}
